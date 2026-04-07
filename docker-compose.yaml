@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  db_test:
+    image: postgis/postgis:15-3.4-alpine
+    container_name: tonipi-gpro-alt-5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: db_test
+    ports:
+      - "5432:5432"
+    networks:
+      - pg-network
+    volumes:
+      - postgres_db_test:/data/db_test
+
+  pgadmin:
+    image: dpage/pgadmin4:8.10
+    container_name: pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/data/pgadmin
+    depends_on:
+      - db_test
+
+networks:
+  pg-network:
+    driver: bridge
+
+volumes:
+  postgres_db_test:
+  pgadmin_data:

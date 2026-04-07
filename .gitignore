@@ -33,3 +33,6 @@ build/
 
 ### Arch ###
 *.zip
+
+### Secrets ###
+.env

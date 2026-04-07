@@ -1,13 +1,13 @@
-package com.prosoft.trstcontainer_demo;
+package com.prosoft.testcontainer_demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrstcontainerDemoApplication {
+public class TestContainerDemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrstcontainerDemoApplication.class, args);
+		SpringApplication.run(TestContainerDemoApplication.class, args);
 	}
 
 }
